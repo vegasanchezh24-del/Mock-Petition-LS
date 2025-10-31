@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Enforcing Recycling — Petition (Mock)</title>
+  <style>
+    :root{
+      --green-dark:#819A91;
+      --green-mid:#A7C1A8;
+      --green-light:#D1D8BE;
+      --beige:#EEEFE0;
+      --text:#222;
+      --muted:#555;
+    }
+    *{box-sizing:border-box;}
+    body{
+      font-family:'Poppins', 'Inter', system-ui, sans-serif;
+      margin:0;
+      background:var(--beige);
+      color:var(--text);
+    }
+    .hero{
+      background:linear-gradient(135deg,var(--green-dark),var(--green-mid));
+      color:white;
+      padding:60px 20px 80px;
+      text-align:center;
+      border-bottom:6px solid var(--green-light);
+    }
+    .hero h1{
+      font-size:2.2rem;
+      margin-bottom:10px;
+      letter-spacing:0.5px;
+    }
+    .hero p{
+      max-width:600px;
+      margin:0 auto;
+      line-height:1.6;
+    }
+
+    .container{
+      max-width:960px;
+      margin:-60px auto 60px;
+      background:white;
+      border-radius:20px;
+      box-shadow:0 6px 25px rgba(0,0,0,0.08);
+      overflow:hidden;
+      padding:30px;
+    }
+
+    h2,h3,h4{color:var(--green-dark)}
+    .lead{color:var(--muted);margin-bottom:1rem;}
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:30px;
+    }
+    @media(max-width:900px){.grid{grid-template-columns:1fr;}}
+
+    .card{
+      background:var(--beige);
+      border-radius:16px;
+      padding:20px;
+      border:1px solid var(--green-light);
+      margin-bottom:20px;
+    }
+
+    form label{display:block;margin-top:10px;font-size:14px;font-weight:500;}
+    input,textarea{
+      width:100%;
+      border:1px solid var(--green-light);
+      border-radius:10px;
+      padding:10px;
+      font-family:inherit;
+      margin-top:4px;
+    }
+
+    .btn{
+      background:var(--green-dark);
+      color:white;
+      border:none;
+      border-radius:10px;
+      padding:10px 16px;
+      font-weight:600;
+      cursor:pointer;
+      transition:background 0.2s;
+    }
+    .btn:hover{background:var(--green-mid);}
+
+    .progress{
+      height:14px;
+      background:var(--green-light);
+      border-radius:10px;
+      overflow:hidden;
+      margin-top:10px;
+    }
+    .progress > i{
+      display:block;
+      height:100%;
+      background:var(--green-dark);
+      transition:width 0.3s;
+    }
+
+    .signature-list{
+      max-height:220px;
+      overflow:auto;
+      background:white;
+      border:1px solid var(--green-light);
+      border-radius:10px;
+      padding:8px;
+    }
+
+    footer{
+      margin-top:30px;
+      padding-top:20px;
+      border-top:1px solid var(--green-light);
+      text-align:center;
+      font-size:13px;
+      color:var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Enforcing Recycling — Petition (Mock)</h1>
+    <p>A student initiative calling for Boca Raton to strengthen recycling enforcement and promote sustainability in our community.</p>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+      <section>
+        <div class="card">
+          <h2>Why this matters</h2>
+          <p class="lead">This petition urges Boca Raton City Council to enact a recycling enforcement bill holding residents and businesses accountable for proper waste sorting.</p>
+
+          <h3>Expected benefits</h3>
+          <ul>
+            <li>Cleaner environment & reduced pollution</li>
+            <li>Creation of local green jobs</li>
+            <li>Stronger community awareness</li>
+          </ul>
+
+          <h3>Goals</h3>
+          <p><strong id="count">0</strong> / <strong id="goal">24000</strong> signatures</p>
+          <div class="progress"><i id="bar" style="width:0%"></i></div>
+        </div>
+
+        <div class="card">
+          <h3>Sign the Petition</h3>
+          <form id="petitionForm" onsubmit="return false;">
+            <label for="name">Full name</label>
+            <input id="name" required />
+
+            <label for="email">Email</label>
+            <input id="email" type="email" required />
+
+            <label for="city">City</label>
+            <input id="city" value="Boca Raton" />
+
+            <label for="comment">Comment (optional)</label>
+            <textarea id="comment" rows="3"></textarea>
+
+            <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn" id="signBtn">Sign Petition</button>
+              <button class="btn" id="resetData" type="button" style="background:#819A91">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Signatures (latest 20)</h3>
+          <div class="signature-list" id="signatures"></div>
+        </div>
+      </section>
+
+      <aside>
+        <div class="card">
+          <h3>Quick Actions</h3>
+          <button class="btn" id="copyLink">Copy link</button>
+          <button class="btn" id="addEndorse" style="background:#A7C1A8;margin-left:10px">Add Endorsement</button>
+
+          <h4 style="margin-top:20px">Timeline</h4>
+          <ol>
+            <li>Research successful recycling programs</li>
+            <li>Collect community support</li>
+            <li>Present findings to City Council</li>
+          </ol>
+        </div>
+
+        <div class="card">
+          <h4>Authors</h4>
+          <p>Sophia El Khaouli, Violeta Blanco,<br>Vega Sanchez-Hernandez, Naia Lewen</p>
+          <p><strong>FAU High School — Class 2A</strong></p>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <p>This mock petition was created for educational purposes only and does not collect real data.</p>
+    </footer>
+  </div>
+
+  <script>
+    const SIGNATURE_GOAL = 24000;
+    const STORE_KEY = 'mockPetition.signatures';
+    const COUNT_KEY = 'mockPetition.count';
+
+    function readArray(key){ try { return JSON.parse(localStorage.getItem(key)) || []; } catch(e){ return []; } }
+    function write(key,val){ localStorage.setItem(key, JSON.stringify(val)); }
+
+    if(!localStorage.getItem(COUNT_KEY)) localStorage.setItem(COUNT_KEY, JSON.stringify(0));
+
+    const countEl = document.getElementById('count');
+    const goalEl = document.getElementById('goal');
+    const bar = document.getElementById('bar');
+    const signaturesEl = document.getElementById('signatures');
+
+    goalEl.textContent = SIGNATURE_GOAL.toLocaleString();
+
+    function render(){
+      const list = readArray(STORE_KEY);
+      const count = parseInt(JSON.parse(localStorage.getItem(COUNT_KEY)||'0'),10) || list.length;
+      countEl.textContent = count.toLocaleString();
+      bar.style.width = Math.min(100,(count/SIGNATURE_GOAL)*100)+'%';
+
+      signaturesEl.innerHTML='';
+      const slice=list.slice(-20).reverse();
+      for(const s of slice){
+        const div=document.createElement('div');
+        div.style.padding='6px 0';
+        div.style.borderBottom='1px solid #D1D8BE';
+        div.innerHTML=`<strong>${s.name}</strong> — ${s.city}<div style="font-size:13px;color:#555">${s.comment||''}</div>`;
+        signaturesEl.appendChild(div);
+      }
+      if(slice.length===0) signaturesEl.innerHTML='<p style="color:#777;font-size:14px">No signatures yet — be the first!</p>';
+    }
+
+    document.getElementById('signBtn').addEventListener('click',()=>{
+      const name=document.getElementById('name').value.trim();
+      const email=document.getElementById('email').value.trim();
+      const city=document.getElementById('city').value.trim()||'Boca Raton';
+      const comment=document.getElementById('comment').value.trim();
+
+      if(!name||!email){alert('Please fill in name and email');return;}
+      const list=readArray(STORE_KEY);
+      list.push({name,email,city,comment});
+      write(STORE_KEY,list);
+      localStorage.setItem(COUNT_KEY,JSON.stringify(list.length));
+      document.getElementById('name').value='';
+      document.getElementById('email').value='';
+      document.getElementById('comment').value='';
+      render();
+      alert('Thanks for signing — mock saved in your browser.');
+    });
+
+    document.getElementById('resetData').addEventListener('click',()=>{
+      if(!confirm('Reset mock petition data?'))return;
+      localStorage.removeItem(STORE_KEY);
+      localStorage.setItem(COUNT_KEY,JSON.stringify(0));
+      render();
+    });
+
+    document.getElementById('copyLink').addEventListener('click',()=>{
+      navigator.clipboard.writeText(location.href);
+      alert('Link copied!');
+    });
+
+    document.getElementById('addEndorse').addEventListener('click',()=>{
+      alert('Endorsement added (mock simulation).');
+    });
+
+    render();
+  </script>
+</body>
+</html>
